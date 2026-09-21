@@ -23,14 +23,20 @@ describe('ProjectsController', () => {
   });
 
   it('coerces the route id for find-one', () => {
-    expect(controller.findOne('42')).toBe('This action returns a #42 project');
+    const result = controller.findOne('42');
+
+    expect(result).toBe('This action returns a #42 project');
   });
 
   it('coerces the route id for update', () => {
-    expect(controller.update('42', {})).toBe('This action updates a #42 project');
+    const result = controller.update('42', {});
+
+    expect(result).toBe('This action updates a #42 project');
   });
 
   it('coerces the route id for removal', () => {
-    expect(controller.remove('42')).toBe('This action removes a #42 project');
+    const result = controller.remove('42');
+
+    expect(result).toBe('This action removes a #42 project');
   });
 });
