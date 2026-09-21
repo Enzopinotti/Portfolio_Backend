@@ -14,7 +14,29 @@ describe('ProjectsController', () => {
     controller = module.get<ProjectsController>(ProjectsController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  it('delegates create to the scaffold service', () => {
+    expect(controller.create({})).toBe('This action adds a new project');
+  });
+
+  it('delegates collection reads to the scaffold service', () => {
+    expect(controller.findAll()).toBe('This action returns all projects');
+  });
+
+  it('coerces the route id for find-one', () => {
+    const result = controller.findOne('42');
+
+    expect(result).toBe('This action returns a #42 project');
+  });
+
+  it('coerces the route id for update', () => {
+    const result = controller.update('42', {});
+
+    expect(result).toBe('This action updates a #42 project');
+  });
+
+  it('coerces the route id for removal', () => {
+    const result = controller.remove('42');
+
+    expect(result).toBe('This action removes a #42 project');
   });
 });

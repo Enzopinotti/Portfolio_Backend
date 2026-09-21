@@ -1,73 +1,161 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Portfolio_Backend — historical NestJS prototype
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Historical backend prototype created in 2024 while exploring a separate NestJS backend for a personal portfolio.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+> **Status:** superseded / maintenance-only. This repository is **not** the backend authority for `enzopinotti.dev`.
 
-## Description
+The maintained portfolio application now lives in:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**https://github.com/Enzopinotti/portafolio-personal**
 
-## Installation
+That repository contains the current full-stack product, including its React frontend, Express backend, MySQL persistence, authentication/integrations, Docker/Compose and deployment tooling.
+
+## What this repository actually contains
+
+This repository preserves a small NestJS 10 / TypeScript scaffold.
+
+The current historical behavior is intentionally simple:
+
+- `GET /` → `Hello World!`;
+- generated `/projects` CRUD routes;
+- generated `/user` CRUD routes;
+- empty DTO/entity classes;
+- placeholder service responses such as `This action returns all projects`.
+
+It does **not** contain:
+
+- a database or persistence layer;
+- authentication or authorization;
+- portfolio production data;
+- external integrations;
+- deployment infrastructure;
+- a maintained production API contract.
+
+The `user` and `projects` modules are Nest CLI-style scaffolds, not completed product modules.
+
+## Why this repository is preserved
+
+The value of this repository is historical progression, not production authority.
+
+It shows an early 2024 backend experiment before the portfolio evolved into the maintained full-stack `portafolio-personal` repository.
+
+The 2026 maintenance lane therefore does **not** invent missing business logic or turn this scaffold into a second production backend.
+
+Instead it makes the historical artifact:
+
+- truthful;
+- reproducible;
+- testable;
+- CI-verified;
+- explicit about its successor.
+
+See [Historical supersession](./docs/historical-supersession.md).
+
+## Runtime
+
+Maintenance runtime:
+
+- Node.js **20.x**
+- npm lockfile v3
+- NestJS **10.x**
+- TypeScript **5.x**
+
+Use the repository runtime:
 
 ```bash
-$ npm install
+nvm use
 ```
 
-## Running the app
+Install exactly from the lockfile:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm ci
 ```
 
-## Test
+## Development
+
+Start normally:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start
 ```
 
-## Support
+Watch mode:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm run start:dev
+```
 
-## Stay in touch
+The application listens on port `3000` because that is the original scaffold behavior.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Quality contract
+
+Run the complete local maintenance gate:
+
+```bash
+npm run quality
+```
+
+It executes:
+
+1. Prettier check;
+2. ESLint with zero warnings and **without auto-fixing**;
+3. unit tests;
+4. E2E route tests;
+5. production build.
+
+GitHub Actions runs the same checks for pull requests and `main`, then audits production dependencies for high-severity vulnerabilities.
+
+### Maintained behavior tests
+
+The 2026 lane replaces definition-only scaffold tests with behavior assertions.
+
+Expected suite:
+
+- **21 unit tests**
+- **11 E2E tests**
+
+The tests deliberately protect the generated placeholder behavior instead of pretending a real persistence/auth domain exists.
+
+## Public historical route surface
+
+| Method | Route | Historical behavior |
+| --- | --- | --- |
+| GET | `/` | `Hello World!` |
+| POST | `/projects` | generated create placeholder |
+| GET | `/projects` | generated collection placeholder |
+| GET | `/projects/:id` | generated id placeholder |
+| PATCH | `/projects/:id` | generated update placeholder |
+| DELETE | `/projects/:id` | generated remove placeholder |
+| POST | `/user` | generated create placeholder |
+| GET | `/user` | generated collection placeholder |
+| GET | `/user/:id` | generated id placeholder |
+| PATCH | `/user/:id` | generated update placeholder |
+| DELETE | `/user/:id` | generated remove placeholder |
+
+These routes are preserved as historical behavior only. They are not advertised as a production API.
+
+## Repository history and provenance
+
+The original 2024 repository consists of two commits authored/committed by Enzopinotti:
+
+- `180a702875ea7a19f5bc14e636e7a6c67dd194a4`
+- `6d74ff65e08ea61bce780d7624aa6299720ce2ab`
+
+The 2026 work is a maintenance/preservation lane. Git history is not rewritten.
+
+## Security and configuration
+
+The current historical scaffold has no runtime secrets/configuration contract because it has no database, auth provider or external service integration.
+
+`.env` files are ignored by Git.
+
+Do not add real credentials merely to make this scaffold look more complete.
+
+If a future product backend is needed, extend the maintained `portafolio-personal` architecture or open a new explicitly justified project instead of silently promoting this historical prototype.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+The package metadata is `UNLICENSED` and there is no repository-level open-source license.
+
+Public visibility does not imply permission to reuse the code under an open-source license.
